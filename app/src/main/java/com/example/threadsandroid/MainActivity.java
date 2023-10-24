@@ -3,6 +3,8 @@ package com.example.threadsandroid;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,10 +18,19 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Button btn = (Button) findViewById(R.id.btnCrida);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getDataFromUrl("https://randomfox.ca/floof/");
+            }
+        });
     }
     private String getDataFromUrl(String demoIdUrl) {
         String error = ""; // string field
